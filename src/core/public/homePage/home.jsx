@@ -21,50 +21,69 @@ const Home = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-amber-50 to-orange-100 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Find Your
-                <br />
-                <span className="text-red-600">Sole Mate</span>
-                <br />
-                With Us
-              </h1>
-              <button className="bg-gray-800 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-900 transition-colors transform hover:scale-105">
-                Buy Now
-              </button>
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('src/assets/top-view-sneakers-compass-table.jpg')"
+          }}
+        >
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
+    
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+            {/* Left side - can be used for additional content if needed */}
+            <div className="hidden lg:block">
+              {/* This space can be used for additional elements or left empty to showcase the background */}
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-              <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
-                <div className="w-80 h-80 mx-auto bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center shadow-2xl">
-                  <div className="text-white text-8xl">👟</div>
+            
+            {/* Right side - Main content */}
+            <div className="relative flex justify-end">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 w-96 max-w-md">
+                <div className="flex flex-col items-center text-center space-y-6">
+                  <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Find Your
+                    <br />
+                    <span className="text-red-600">Sole Mate</span>
+                    <br />
+                    With Us
+                  </h1>
+                  <button className="bg-gray-800 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    BUY NOW
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+    </section>
 
       {/* Category Cards */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: 'MAN', image: '👨', bg: 'from-blue-500 to-blue-700' },
-              { title: 'WOMEN', image: '👩', bg: 'from-pink-500 to-pink-700' },
-              { title: 'KID', image: '🧒', bg: 'from-green-500 to-green-700' }
+              { title: 'MAN', image: 'src/assets/men.jpg'},
+              { title: 'WOMEN', image: 'src/assets/women.jpg'},
+              { title: 'KID', image: 'src/assets/kid.jpg'}
             ].map((category) => (
               <div key={category.title} className="group cursor-pointer">
-                <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${category.bg} h-64 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl`}>
-                  <div className="absolute inset-0 bg-black/20"></div>
-                  <div className="relative h-full flex flex-col items-center justify-center text-white">
-                    <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {category.image}
+                <div className="relative overflow-hidden rounded-2xl h-130 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{
+                      backgroundImage: `url('${category.image}')`
+                    }}
+                  ></div>
+                  <div className="relative h-full flex flex-col justify-end inset-0 bg-black/30">
+                    <div className="p-6 text-center">
+                      <h3 className="text-3xl font-bold tracking-wide text-white drop-shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        {category.title}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-bold tracking-wide">{category.title}</h3>
                   </div>
                 </div>
               </div>
