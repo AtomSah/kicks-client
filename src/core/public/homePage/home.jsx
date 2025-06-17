@@ -1,19 +1,64 @@
-import React, { useState } from 'react';
-import { ShoppingCart, Heart, Star } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ShoppingCart, Heart, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navbar from '../../../components/navbar';
 
 const Home = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
+  const galleryImages = [
+  'src/assets/galleryimage/w1.png',
+  'src/assets/galleryimage/w2.png',
+  'src/assets/galleryimage/w3.png',
+  'src/assets/galleryimage/w4.png',
+  'src/assets/galleryimage/w5.png',
+  'src/assets/galleryimage/w6.png',
+  'src/assets/galleryimage/w7.png',
+  // ... add more images
+];
+  
+  // Carousel images - replace with your actual image paths
+  const carouselImages = [
+    'src/assets/carasol/carasol2.jpg',
+    // 'src/assets/carasol/carasol3.jpg', 
+    // 'src/assets/carasol/carasol4.jpg',
+    'src/assets/carasol/carasol5.jpg',
+    'src/assets/carasol/carasol6.jpg',
+    'src/assets/carasol/carasol9.jpg',
+    'src/assets/carasol/carasol8.jpg'
+  ];
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  // Updated products array with brand information
   const products = [
-    { id: 1, name: 'Men running shoes', price: '$299', originalPrice: '$399', discount: '25%', image: '/api/placeholder/200/200', category: 'men' },
-    { id: 2, name: 'Formal canvas shoes for men', price: '$249.99', originalPrice: '$349.99', discount: '29%', image: '/api/placeholder/200/200', category: 'men' },
-    { id: 3, name: 'Formal canvas shoes for men', price: '$249.99', originalPrice: '$349.99', discount: '29%', image: '/api/placeholder/200/200', category: 'men' },
-    { id: 4, name: 'Casual shoe drop for men', price: '$299.99', originalPrice: '$399.99', discount: '25%', image: '/api/placeholder/200/200', category: 'men' },
-    { id: 5, name: 'Sport shoes', price: '$199.99', originalPrice: '$299.99', discount: '33%', image: '/api/placeholder/200/200', category: 'women' },
-    { id: 6, name: 'Canvas shoes', price: '$179.99', originalPrice: '$249.99', discount: '28%', image: '/api/placeholder/200/200', category: 'women' },
-    { id: 7, name: 'Running shoes', price: '$229.99', originalPrice: '$329.99', discount: '30%', image: '/api/placeholder/200/200', category: 'women' },
-    { id: 8, name: 'Casual sneakers', price: '$189.99', originalPrice: '$269.99', discount: '30%', image: '/api/placeholder/200/200', category: 'kids' }
+    { id: 1, name: 'Men running shoes', brand: 'Nike', price: '$299', discount: '25%', image: 'src/assets/men/nike1.png', category: 'men' },
+    { id: 2, name: 'Formal canvas shoes for men', brand: 'Adidas', price: '$249.99', discount: '29%', image: 'src/assets/men/formal men1.png', category: 'men' },
+    { id: 3, name: 'Formal canvas shoes for men', brand: 'Puma', price: '$249.99', discount: '29%', image: 'src/assets/men/sports men1.png', category: 'men' },
+    { id: 4, name: 'Casual shoe drop for men', brand: 'Nike', price: '$299.99', discount: '25%', image: 'src/assets/men/nike2.png', category: 'men' },
+    { id: 5, name: 'Sport shoes', brand: 'Adidas', price: '$199.99', discount: '33%', image: 'src/assets/women/womensandel3.png', category: 'women' },
+    { id: 6, name: 'Canvas shoes', brand: 'Converse', price: '$179.99', discount: '28%', image: 'src/assets/women/womensandel1.png', category: 'women' },
+    { id: 7, name: 'Running shoes', brand: 'Nike', price: '$229.99', discount: '30%', image: 'src/assets/women/women heels.png', category: 'women' },
+    { id: 8, name: 'Casual sneakers', brand: 'Adidas', price: '$189.99', discount: '30%', image: 'src/assets/KID/kid 2.png', category: 'kids' }
   ];
 
   return (
@@ -93,68 +138,273 @@ const Home = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Products</h2>
-            <div className="w-24 h-1 bg-red-600 mx-auto"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product) => (
-              <div 
-                key={product.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                onMouseEnter={() => setHoveredProduct(product.id)}
-                onMouseLeave={() => setHoveredProduct(null)}
-              >
-                <div className="relative">
-                  <div className="bg-gray-100 h-48 flex items-center justify-center">
-                    <div className="text-6xl">👟</div>
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Products</h2>
+              <div className="w-24 h-1 bg-red-600 mx-auto"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {products.map((product) => (
+                <div 
+                  key={product.id}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  onMouseEnter={() => setHoveredProduct(product.id)}
+                  onMouseLeave={() => setHoveredProduct(null)}
+                >
+                  <div className="relative">
+                    {/* Product Image */}
+                    <div className="bg-gray-100 h-48 flex items-center justify-center overflow-hidden">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
                   </div>
-                  <div className="absolute top-4 left-4 bg-red-600 text-white px-2 py-1 rounded-md text-sm font-semibold">
-                    -{product.discount}
-                  </div>
-                  <div className={`absolute top-4 right-4 transform transition-all duration-300 ${hoveredProduct === product.id ? 'scale-110' : 'scale-100'}`}>
-                    <Heart className="w-6 h-6 text-gray-400 hover:text-red-500 cursor-pointer" />
+                  
+                  <div className="p-6">
+                    <p className="text-sm text-gray-500 mb-1">{product.brand}</p>
+                    
+                    <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">{product.name}</h3>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-lg font-bold text-gray-900">{product.price}</span>
+                      </div>
+                      
+                      {/* Add to Cart Button */}
+                      <button className={`p-2 rounded-full transition-all duration-300 bg-gray-200 text-gray-600`}>
+                        <ShoppingCart className="w-5 h-5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        <section className="py-16 bg-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Side - Text Content */}
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                50+ Trendy Kicks
+                <br />
+                <span className="text-red-600">You'll Love</span>
+              </h2>
+            </div>
+            
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Our designer sneakers create a list of beautiful 
+              premixed and trendy color themes for you to choose 
+              from the best collection.
+            </p>
+            
+            <button className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              Explore More
+            </button>
+          </div>
+
+          {/* Right Side - Image Carousel */}
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              
+              {/* Main Carousel Container */}
+              <div className="relative h-96 bg-gradient-to-br from-orange-200 to-red-200">
                 
-                <div className="p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">{product.name}</h3>
-                  <div className="flex items-center mb-3">
-                    {[1,2,3,4,5].map((star) => (
-                      <Star key={star} className="w-4 h-4 text-yellow-400 fill-current" />
-                    ))}
-                    <span className="text-gray-500 text-sm ml-2">(4.8)</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg font-bold text-gray-900">{product.price}</span>
-                      <span className="text-sm text-gray-500 line-through">{product.originalPrice}</span>
+                {/* Carousel Images */}
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out h-full"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {carouselImages.map((image, index) => (
+                    <div key={index} className="w-full h-full flex-shrink-0 relative">
+                      <div className="absolute inset-0 bg-gradient-to-br "></div>
+                      <img
+                        src={image}
+                        alt={`Trendy shoe ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />                      
                     </div>
-                    <button className={`p-2 rounded-full transition-all duration-300 ${hoveredProduct === product.id ? 'bg-red-600 text-white scale-110' : 'bg-gray-100 text-gray-600'}`}>
-                      <ShoppingCart className="w-5 h-5" />
-                    </button>
-                  </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Step In Style Gallery Section ------------------------------------------------------------------------------------------- */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-gray-600 text-lg mb-2">Your steps, your story</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">#StepInStyle</h2>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-auto">
+            {/* Large square image */}
+            <div className="col-span-2 row-span-2">
+              <div className=" rounded-2xl overflow-hidden h-64 md:h-90 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d2.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover  transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Tall rectangle */}
+            <div className="col-span-1 row-span-2">
+              <div className=" rounded-2xl overflow-hidden h-64 md:h-80 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/w10.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover  transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Regular square */}
+            <div className="col-span-1 row-span-1">
+              <div className=" rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d1.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover  transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Wide rectangle */}
+            <div className="col-span-2 row-span-1">
+              <div className="rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d3.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover  transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Another regular square */}
+            <div className="col-span-1 row-span-1">
+              <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d5.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover  transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Tall rectangle */}
+            <div className="col-span-1 row-span-2">
+              <div className="bg-gray-200 rounded-2xl overflow-hidden h-64 md:h-80 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d6.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover  transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Square */}
+            <div className="col-span-1 row-span-1">
+              <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d7.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover  transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Wide rectangle */}
+            <div className="col-span-2 row-span-1">
+              <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d8.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Another square */}
+            <div className="col-span-1 row-span-1">
+              <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
+                <img 
+                  src="src/assets/galleryimage/d9.jpg" 
+                  alt="Style showcase" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="text-3xl font-bold mb-4">👟 Kicks</div>
-            <p className="text-gray-400 mb-8">Find Your Perfect Pair</p>
-            <div className="flex justify-center space-x-8">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">About</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms</a>
+      <footer className="bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Brand Section */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center space-x-3 mb-6">
+                <img 
+                  src="src/assets/logo.png" 
+                  alt="Kicks Logo" 
+                  className="h-10 w-10 object-contain"
+                />
+                <div className="text-2xl font-bold">Kicks</div>
+              </div>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Step into style with our premium collection of footwear. Quality, comfort, and fashion in every step.
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Shop All</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Men's Shoes</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Women's Shoes</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Kids' Shoes</a></li>
+              </ul>
+            </div>
+
+            {/* Customer Service */}
+            <div>
+              <h3 className="text-lg font-semibold mb-6">Customer Service</h3>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="border-t border-gray-800 mt-12 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-400 text-sm mb-4 md:mb-0">
+                © 2024 Kicks. All rights reserved. | Made with ❤️ for shoe lovers
+              </p>
+              <div className="flex space-x-6">
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+              </div>
             </div>
           </div>
         </div>
