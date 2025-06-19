@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-
-export default function Login() {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -11,16 +9,15 @@ export default function Login() {
 
   const handleSubmit = () => {
     console.log('Login attempt:', { username, password, rememberMe });
-
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex flex-col lg:flex-row relative">
       {/* Left Panel - Login Form */}
-      <div className="w-3/5 flex items-center justify-center bg-white px-8">
+      <div className="w-full lg:w-3/5 flex items-center justify-center bg-white px-4 sm:px-8 py-8 lg:py-0">
         <div className="w-full max-w-md">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
               WELCOME TO KICKS
             </h1>
           </div>
@@ -102,30 +99,38 @@ export default function Login() {
             <div className="text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{' '}
-                <Link to="/Register">
                 <a href="#" className="font-medium text-amber-600 hover:text-amber-500">
                   Register
-                </a></Link>
+                </a>
               </p>
-            </div>
-         </div>
-        </div>
-      </div>
-
-      {/* Right Panel - Image */}
-      <div className=" w-2/5 relative bg-gradient-to-br from-orange-200 to-orange-300">
-        <div className="absolute inset-0 flex items-center justify-center"> 
-          <div className="relative">            
-             <div className=" relative absolute w-80 h-80 bg-gray-300"> 
-                <img
-                    src="src/assets/loginp.png" 
-                    alt="shoe"
-                />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Right Panel - Hidden on mobile */}
+      <div className="hidden lg:block lg:w-2/5 bg-gradient-to-br from-orange-200 to-orange-300">
+      </div>
+
+      {/* Mobile Background */}
+      <div className="lg:hidden absolute inset-0 bg-gradient-to-br from-orange-200 to-orange-300 opacity-10 -z-10">
+      </div>
+
+      {/* Centered Image - Responsive positioning */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-[600px] lg:h-[600px] flex justify-center absolute 
+                       bottom-4 right-4 sm:bottom-8 sm:right-8 md:bottom-12 md:right-12 lg:bottom-auto lg:right-44 lg:top-1/2 lg:-translate-y-1/2
+                       bg-gray-300 rounded-lg shadow-lg pointer-events-auto">
+          <img
+            src="src/assets/loginp.png"
+            alt="shoe"
+            className="max-w-full max-h-full object-contain p-2 sm:p-4"
+          />
+        </div>
+      </div>
     </div>
-  );
-}
+  )
+};
+
+export default Login
 
