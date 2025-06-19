@@ -14,10 +14,8 @@ const Home = () => {
   'src/assets/galleryimage/w5.png',
   'src/assets/galleryimage/w6.png',
   'src/assets/galleryimage/w7.png',
-  // ... add more images
 ];
   
-  // Carousel images - replace with your actual image paths
   const carouselImages = [
     'src/assets/carasol/carasol2.jpg',
     // 'src/assets/carasol/carasol3.jpg', 

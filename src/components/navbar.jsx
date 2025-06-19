@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
+
     return (
         <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,12 +27,16 @@ const Navbar = () => {
             </nav>
             
             <div className="flex items-center space-x-8 right-0">
-              <button className="bg-amber-950 text-white px-6 py-2 rounded-lg hover:bg-amber-900 transition-colors">
-                Login
-              </button>
+              <Link to="/Login">
+                <button className="bg-amber-950 text-white px-6 py-2 rounded-lg hover:bg-amber-900 transition-colors">
+                  Login
+                </button>
+              </Link>
+              <Link to ="/Register">
               <button className="bg-amber-950 text-white px-6 py-2 rounded-lg hover:bg-amber-900 transition-colors">
                 Register
               </button>
+              </Link>
             </div>
           </div>
         </div>
