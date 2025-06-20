@@ -110,21 +110,24 @@ function Register() {
         </div>
       </div>
 
-      {/* Right Panel - Image */}
-      <div className="w-2/5 relative bg-gradient-to-br from-orange-200 to-orange-300">
-        <div className="absolute inset-0 flex items-center justify-center"> 
-          <div className="relative">            
-             <div className="absolute relative w-80 h-80 bg-gray-300   "> 
-                <img
-                    src="src/assets/loginp.png" 
-                    alt="shoe"
-                />
-            </div>
-          </div>
+        {/* Right Panel - Image */}
+        <div className="w-2/5 relative bg-gradient-to-br from-orange-200 to-orange-300">
+        </div>
+
+        {/* Centered Image - Responsive positioning */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-[600px] lg:h-[600px] flex justify-center absolute 
+                       bottom-4 right-4 sm:bottom-8 sm:right-8 md:bottom-12 md:right-12 lg:bottom-auto lg:right-44 lg:top-1/2 lg:-translate-y-1/2
+                       bg-gray-300 rounded-lg shadow-lg pointer-events-auto">
+          <img
+            src="src/assets/loginp.png"
+            alt="shoe"
+            className="max-w-full max-h-full object-contain p-2 sm:p-4"
+          />
         </div>
       </div>
-    </div>
-  );
-}
+      </div>
+    );
+  }
 
 export default Register;

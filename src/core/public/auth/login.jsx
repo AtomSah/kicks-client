@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -98,10 +99,12 @@ const Login = () => {
             {/* Register Link */}
             <div className="text-center">
               <p className="text-sm text-gray-600">
-                Don't have an account?{' '}
+                Don't have an account?{`  `}
+                <Link to="/Register">
                 <a href="#" className="font-medium text-amber-600 hover:text-amber-500">
                   Register
                 </a>
+                </Link>
               </p>
             </div>
           </div>
@@ -110,10 +113,6 @@ const Login = () => {
 
       {/* Right Panel - Hidden on mobile */}
       <div className="hidden lg:block lg:w-2/5 bg-gradient-to-br from-orange-200 to-orange-300">
-      </div>
-
-      {/* Mobile Background */}
-      <div className="lg:hidden absolute inset-0 bg-gradient-to-br from-orange-200 to-orange-300 opacity-10 -z-10">
       </div>
 
       {/* Centered Image - Responsive positioning */}
