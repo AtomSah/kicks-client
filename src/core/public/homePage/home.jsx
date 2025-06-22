@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Heart, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navbar from '../../../components/navbar';
+import Footer from '../../../components/footer';
 
 const Home = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -350,63 +351,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Brand Section */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center space-x-3 mb-6">
-                <img 
-                  src="src/assets/logo.png" 
-                  alt="Kicks Logo" 
-                  className="h-10 w-10 object-contain"
-                />
-                <div className="text-2xl font-bold">Kicks</div>
-              </div>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Step into style with our premium collection of footwear. Quality, comfort, and fashion in every step.
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
-              <ul className="space-y-4">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Shop All</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Men's Shoes</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Women's Shoes</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Kids' Shoes</a></li>
-              </ul>
-            </div>
-
-            {/* Customer Service */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Customer Service</h3>
-              <ul className="space-y-4">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="border-t border-gray-800 mt-12 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400 text-sm mb-4 md:mb-0">
-                © 2024 Kicks. All rights reserved. | Made with ❤️ for shoe lovers
-              </p>
-              <div className="flex space-x-6">
-                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
+            
     </div>
   );
 };

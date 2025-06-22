@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+
 const Navbar = () => {
 
     return (
@@ -20,8 +21,8 @@ const Navbar = () => {
             </div>
             
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">Home</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">Shop</a>
+              <Link to ="/"><a href="#" className="text-gray-700 hover:text-gray-900 font-medium">Home</a></Link>
+              <Link to = "/Shop"><a href="#" className="text-gray-700 hover:text-gray-900 font-medium">Shop</a></Link>
               <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">About</a>
               <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">Contact</a>
             </nav>
