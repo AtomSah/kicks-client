@@ -36,11 +36,11 @@ const Shop = () => {
     },
     {
       id: 4,
-      name: "",
+      name: "formal shoe",
       brand: "Nike",
       price: "$2499",
       originalPrice: "$3499",
-      image: "src/assets/men/formal men3.png",
+      image: "src/assets/men/formal men 2.png",
       isNew: true
     },
     {
