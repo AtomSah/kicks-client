@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const navigate = useNavigate();
+
+  const handleProductClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); // Prevent navigation when clicking cart button
+    // Add to cart functionality here
+    console.log('Added to cart:', product);
+  };
 
   return (
     <div
       className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:scale-105"
+      onClick={handleProductClick}
     >
       {/* Product Image */}
       <div className="relative bg-gray-100 aspect-square flex items-center justify-center overflow-hidden">
@@ -44,7 +57,10 @@ const ProductCard = ({ product }) => {
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <button className="p-2 rounded-full bg-gray-200 text-gray-600 transition-colors hover:bg-gray-300">
+            <button 
+              onClick={handleAddToCart}
+              className="p-2 rounded-full bg-gray-200 text-gray-600 transition-colors hover:bg-gray-300"
+            >
               <ShoppingCart className="w-5 h-5" />
             </button>
             {showTooltip && (
