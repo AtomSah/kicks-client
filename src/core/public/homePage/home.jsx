@@ -2,21 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Heart, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navbar from '../../../components/navbar';
 import Footer from '../../../components/footer';
+import DynamicProductSection from './DynamicProductSection';
 
 const Home = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const galleryImages = [
-  'src/assets/galleryimage/w1.png',
-  'src/assets/galleryimage/w2.png',
-  'src/assets/galleryimage/w3.png',
-  'src/assets/galleryimage/w4.png',
-  'src/assets/galleryimage/w5.png',
-  'src/assets/galleryimage/w6.png',
-  'src/assets/galleryimage/w7.png',
-];
-  
+    'src/assets/galleryimage/w1.png',
+    'src/assets/galleryimage/w2.png',
+    'src/assets/galleryimage/w3.png',
+    'src/assets/galleryimage/w4.png',
+    'src/assets/galleryimage/w5.png',
+    'src/assets/galleryimage/w6.png',
+    'src/assets/galleryimage/w7.png',
+  ];
+
   const carouselImages = [
     'src/assets/carasol/carasol2.jpg',
     // 'src/assets/carasol/carasol3.jpg', 
@@ -67,7 +68,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden">
         {/* Background Image */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('src/assets/top-view-sneakers-compass-table.jpg')"
@@ -76,14 +77,14 @@ const Home = () => {
           {/* Overlay for better text readability */}
           <div className="absolute inset-0 bg-black/20"></div>
         </div>
-    
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             {/* Left side - can be used for additional content if needed */}
             <div className="hidden lg:block">
               {/* This space can be used for additional elements or left empty to showcase the background */}
             </div>
-            
+
             {/* Right side - Main content */}
             <div className="relative flex justify-end">
               <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20 w-96 max-w-md">
@@ -103,20 +104,20 @@ const Home = () => {
             </div>
           </div>
         </div>
-    </section>
+      </section>
 
       {/* Category Cards */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: 'MAN', image: 'src/assets/men.jpg'},
-              { title: 'WOMEN', image: 'src/assets/women.jpg'},
-              { title: 'KID', image: 'src/assets/kid.jpg'}
+              { title: 'MAN', image: 'src/assets/men.jpg' },
+              { title: 'WOMEN', image: 'src/assets/women.jpg' },
+              { title: 'KID', image: 'src/assets/kid.jpg' }
             ].map((category) => (
               <div key={category.title} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-2xl h-130 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">
-                  <div 
+                  <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{
                       backgroundImage: `url('${category.image}')`
@@ -136,214 +137,167 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Products Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Products</h2>
-              <div className="w-24 h-1 bg-red-600 mx-auto"></div>
+      <DynamicProductSection />
+
+
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Left Side - Text Content */}
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  50+ Trendy Kicks
+                  <br />
+                  <span className="text-red-600">You'll Love</span>
+                </h2>
+              </div>
+
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Our designer sneakers create a list of beautiful
+                premixed and trendy color themes for you to choose
+                from the best collection.
+              </p>
+
+              <button className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Explore More
+              </button>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {products.map((product) => (
-                <div 
-                  key={product.id}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                  onMouseEnter={() => setHoveredProduct(product.id)}
-                  onMouseLeave={() => setHoveredProduct(null)}
-                >
-                  <div className="relative">
-                    {/* Product Image */}
-                    <div className="bg-gray-100 h-48 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <p className="text-sm text-gray-500 mb-1">{product.brand}</p>
-                    
-                    <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">{product.name}</h3>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-lg font-bold text-gray-900">{product.price}</span>
+
+            {/* Right Side - Image Carousel */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+
+                {/* Main Carousel Container */}
+                <div className="relative h-96 bg-gradient-to-br from-orange-200 to-red-200">
+
+                  {/* Carousel Images */}
+                  <div
+                    className="flex transition-transform duration-500 ease-in-out h-full"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {carouselImages.map((image, index) => (
+                      <div key={index} className="w-full h-full flex-shrink-0 relative">
+                        <div className="absolute inset-0 bg-gradient-to-br "></div>
+                        <img
+                          src={image}
+                          alt={`Trendy shoe ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      
-                      {/* Add to Cart Button */}
-                      <button className={`p-2 rounded-full transition-all duration-300 bg-gray-200 text-gray-600`}>
-                        <ShoppingCart className="w-5 h-5" />
-                      </button>
-                    </div>
+                    ))}
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        <section className="py-16 bg-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Side - Text Content */}
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                50+ Trendy Kicks
-                <br />
-                <span className="text-red-600">You'll Love</span>
-              </h2>
-            </div>
-            
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Our designer sneakers create a list of beautiful 
-              premixed and trendy color themes for you to choose 
-              from the best collection.
-            </p>
-            
-            <button className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Explore More
-            </button>
-          </div>
-
-          {/* Right Side - Image Carousel */}
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              
-              {/* Main Carousel Container */}
-              <div className="relative h-96 bg-gradient-to-br from-orange-200 to-red-200">
-                
-                {/* Carousel Images */}
-                <div 
-                  className="flex transition-transform duration-500 ease-in-out h-full"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {carouselImages.map((image, index) => (
-                    <div key={index} className="w-full h-full flex-shrink-0 relative">
-                      <div className="absolute inset-0 bg-gradient-to-br "></div>
-                      <img
-                        src={image}
-                        alt={`Trendy shoe ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />                      
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Step In Style Gallery Section ------------------------------------------------------------------------------------------- */}
+      {/* Step In Style Gallery Section ------------------------------------------------------------------------------------------- */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-gray-600 text-lg mb-2">Your steps, your story</p>
             <h2 className="text-4xl font-bold text-gray-900 mb-8">#StepInStyle</h2>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-auto">
             {/* Large square image */}
             <div className="col-span-2 row-span-2">
               <div className=" rounded-2xl overflow-hidden h-64 md:h-90 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d2.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d2.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover  transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Tall rectangle */}
             <div className="col-span-1 row-span-2">
               <div className=" rounded-2xl overflow-hidden h-64 md:h-80 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/w10.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/w10.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover  transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Regular square */}
             <div className="col-span-1 row-span-1">
               <div className=" rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d1.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d1.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover  transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Wide rectangle */}
             <div className="col-span-2 row-span-1">
               <div className="rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d3.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d3.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover  transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Another regular square */}
             <div className="col-span-1 row-span-1">
               <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d5.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d5.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover  transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Tall rectangle */}
             <div className="col-span-1 row-span-2">
               <div className="bg-gray-200 rounded-2xl overflow-hidden h-64 md:h-80 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d6.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d6.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover  transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Square */}
             <div className="col-span-1 row-span-1">
               <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d7.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d7.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover  transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Wide rectangle */}
             <div className="col-span-2 row-span-1">
               <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d8.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d8.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
             </div>
-            
+
             {/* Another square */}
             <div className="col-span-1 row-span-1">
               <div className="bg-gray-200 rounded-2xl overflow-hidden h-32 md:h-40 group cursor-pointer">
-                <img 
-                  src="src/assets/galleryimage/d9.jpg" 
-                  alt="Style showcase" 
+                <img
+                  src="src/assets/galleryimage/d9.jpg"
+                  alt="Style showcase"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
@@ -351,8 +305,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <Footer/>
-            
+      <Footer />
+
     </div>
   );
 };

@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Filter } from 'lucide-react';
+import axios from 'axios';
 import Navbar from '../../../components/navbar';
 import Footer from '../../../components/footer';
 import ProductCard from './productCard';
-import { products } from '../../../data/products';
 
 const Shop = () => {
   const [showFilters, setShowFilters] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch products on mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/shoes');
+        setProducts(res.data);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative h-64 md:h-80 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -46,7 +64,7 @@ const Shop = () => {
         </div>
       </div>
 
-      {/* Product Grid */}
+      {/* Products */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -54,22 +72,26 @@ const Shop = () => {
             <div className="w-24 h-1 bg-red-600 mx-auto"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="text-center text-gray-600">Loading products...</div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Load More */}
+      {/* Load More Button (optional feature) */}
       <div className="text-center pb-12">
         <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium transition-colors">
           Load More Products
         </button>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };

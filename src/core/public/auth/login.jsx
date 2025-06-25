@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthContext';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = () => {
-    console.log('Login attempt:', { username, password, rememberMe });
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    const res = await login({ email, password });
+
+    if (res.success) {
+      navigate('/');
+    }
   };
 
   return (
@@ -24,21 +32,23 @@ const Login = () => {
           </div>
 
           <div className="space-y-6">
+            {/* Email */}
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                User name
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email address
               </label>
               <input
-                id="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
                 className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                 required
               />
             </div>
 
+            {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Enter your Password
@@ -67,7 +77,7 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Remember Me and Forgot Password */}
+            {/* Remember Me */}
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
@@ -88,7 +98,7 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Login Button */}
+            {/* Submit */}
             <button
               onClick={handleSubmit}
               className="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
@@ -99,11 +109,9 @@ const Login = () => {
             {/* Register Link */}
             <div className="text-center">
               <p className="text-sm text-gray-600">
-                Don't have an account?{`  `}
-                <Link to="/Register">
-                <a href="#" className="font-medium text-amber-600 hover:text-amber-500">
+                Don't have an account?{' '}
+                <Link to="/Register" className="font-medium text-amber-600 hover:text-amber-500">
                   Register
-                </a>
                 </Link>
               </p>
             </div>
@@ -111,11 +119,10 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Right Panel - Hidden on mobile */}
-      <div className="hidden lg:block lg:w-2/5 bg-gradient-to-br from-orange-200 to-orange-300">
-      </div>
+      {/* Right Panel */}
+      <div className="hidden lg:block lg:w-2/5 bg-gradient-to-br from-orange-200 to-orange-300" />
 
-      {/* Centered Image - Responsive positioning */}
+      {/* Center Image */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-[600px] lg:h-[600px] flex justify-center absolute 
                        bottom-4 right-4 sm:bottom-8 sm:right-8 md:bottom-12 md:right-12 lg:bottom-auto lg:right-44 lg:top-1/2 lg:-translate-y-1/2
@@ -128,8 +135,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
-export default Login
-
+export default Login;
