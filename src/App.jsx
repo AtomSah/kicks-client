@@ -5,6 +5,7 @@ import Register from './core/public/auth/register';
 import Shop from './core/public/product/productPage';
 import AboutUs from './core/public/aboutUs';
 import ProductDetails from './core/public/product/productDetails';
+import CartDrawer from './components/CartDrawer'; // ✅ import here
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
+
+      <CartDrawer />
     </Router>
   );
 }

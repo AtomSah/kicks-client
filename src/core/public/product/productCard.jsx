@@ -10,11 +10,13 @@ const ProductCard = ({ product }) => {
     navigate(`/product/${product._id}`);
   };
 
-  const handleAddToCart = (e) => {
-    e.stopPropagation(); // Prevent navigation when clicking cart button
-    // Add to cart functionality here
-    console.log('Added to cart:', product);
-  };
+  const handleAddToCart = () => {
+  if (!user) {
+    toast.warning("Please login to add items to your cart.");
+    return;
+  }
+  addToCart(product); 
+};
 
   return (
     <div

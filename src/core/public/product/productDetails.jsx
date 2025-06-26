@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import {
-  Star,
-  ShoppingCart,
-  Heart,
-  Share2,
-  Minus,
-  Plus,
-} from 'lucide-react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Star, ShoppingCart, Heart, Share2, Minus, Plus } from 'lucide-react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 import Navbar from '../../../components/navbar';
 import Footer from '../../../components/footer';
 import ProductCard from './productCard';
 
+import { AuthContext } from '../../../context/AuthContext';
+import { CartContext } from '../../../context/CartContext';
+
 const ProductDetails = () => {
-  const { id } = useParams(); // product id from URL
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -33,6 +35,7 @@ const ProductDetails = () => {
         setRelatedProducts(related);
       } catch (error) {
         console.error("Error fetching product:", error);
+        toast.error("Failed to load product");
       } finally {
         setLoading(false);
       }
@@ -47,6 +50,36 @@ const ProductDetails = () => {
     } else if (type === 'decrement' && quantity > 1) {
       setQuantity(prev => prev - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    if (!user) {
+      toast.warning("Please log in to add items to your cart.");
+      return;
+    }
+
+    if (!selectedSize) {
+      toast.warning("Please select a size.");
+      return;
+    }
+
+    addToCart(product, quantity, selectedSize);
+    toast.success("Product added to cart!");
+  };
+
+  const handleBuyNow = () => {
+    if (!user) {
+      toast.warning("Please log in to proceed to checkout.");
+      return;
+    }
+
+    if (!selectedSize) {
+      toast.warning("Please select a size.");
+      return;
+    }
+
+    addToCart(product, quantity, selectedSize); // Optional
+    navigate('/checkout');
   };
 
   if (loading) {
@@ -76,9 +109,7 @@ const ProductDetails = () => {
           <div className="space-y-4">
             <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
               <img
-                src={
-                  product.images?.[selectedImage] || product.image
-                }
+                src={product.images?.[selectedImage] || product.image}
                 alt={product.name}
                 className="w-full h-full object-contain"
               />
@@ -143,8 +174,7 @@ const ProductDetails = () => {
             <div>
               <h3 className="text-lg font-semibold mb-2">Description</h3>
               <p className="text-gray-600 leading-relaxed">
-                {product.description ||
-                  "High-quality shoes designed for comfort and style."}
+                {product.description || "High-quality shoes designed for comfort and style."}
               </p>
             </div>
 
@@ -189,25 +219,20 @@ const ProductDetails = () => {
             </div>
 
             <div className="space-y-4">
-              <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2">
+              <button
+                onClick={handleBuyNow}
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2"
+              >
                 <span>Buy Now</span>
               </button>
 
-              <button className="w-full border border-orange-500 text-orange-500 hover:bg-orange-50 py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2">
+              <button
+                onClick={handleAddToCart}
+                className="w-full border border-orange-500 text-orange-500 hover:bg-orange-50 py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2"
+              >
                 <ShoppingCart className="w-5 h-5" />
                 <span>Add to Cart</span>
               </button>
-
-              <div className="flex space-x-4">
-                <button className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2">
-                  <Heart className="w-5 h-5" />
-                  <span>Wishlist</span>
-                </button>
-                <button className="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50 py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2">
-                  <Share2 className="w-5 h-5" />
-                  <span>Share</span>
-                </button>
-              </div>
             </div>
           </div>
         </div>

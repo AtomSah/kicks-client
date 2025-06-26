@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart, User } from 'lucide-react';
 import { useContext, useState, useRef, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { useCart } from '../context/CartContext'; // ✅ Import useCart
 import logo from '../assets/logo.png';
-
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const { toggleCart } = useCart(); // ✅ Destructure toggleCart
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
@@ -30,7 +31,6 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img src={logo} alt="Kicks Logo" className="h-10 w-10 object-contain" />
-
             <div className="text-2xl font-bold text-gray-900">Kicks</div>
           </div>
 
@@ -46,12 +46,12 @@ const Navbar = () => {
           <div className="flex items-center space-x-6 relative">
             {user ? (
               <>
-                {/* Cart Icon */}
-                <Link to="/cart">
+                {/* ✅ Cart Button instead of Link */}
+                <button onClick={toggleCart}>
                   <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-amber-600 cursor-pointer" />
-                </Link>
+                </button>
 
-                {/* Profile Icon with Dropdown */}
+                {/* Profile Dropdown */}
                 <div className="relative" ref={dropdownRef}>
                   <button onClick={toggleDropdown}>
                     <User className="w-6 h-6 text-gray-700 hover:text-amber-600 cursor-pointer" />
