@@ -47,9 +47,9 @@ const Navbar = () => {
             {user ? (
               <>
                 {/* ✅ Cart Button instead of Link */}
-                <button onClick={toggleCart}>
+                <Link to={"/cart"}>
                   <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-amber-600 cursor-pointer" />
-                </button>
+                </Link>
 
                 {/* Profile Dropdown */}
                 <div className="relative" ref={dropdownRef}>

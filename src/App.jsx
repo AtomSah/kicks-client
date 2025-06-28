@@ -6,6 +6,7 @@ import Shop from './core/public/product/productPage';
 import AboutUs from './core/public/aboutUs';
 import ProductDetails from './core/public/product/productDetails';
 import CartDrawer from './components/CartDrawer'; // ✅ import here
+import CartPage from './core/public/cart/cartPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
 
       <CartDrawer />
