@@ -35,7 +35,7 @@ const Shop = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/top-view-sneakers-compass-table.jpg')"
+            backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/baki-photo/top-view-sneakers-compass-table.jpg')"
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">

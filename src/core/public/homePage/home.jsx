@@ -72,7 +72,7 @@ const Home = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('src/assets/top-view-sneakers-compass-table.jpg')"
+            backgroundImage: "url('src/assets/baki-photo/top-view-sneakers-compass-table.jpg')"
           }}
         >
           {/* Overlay for better text readability */}
@@ -112,9 +112,9 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: 'MAN', image: 'src/assets/men.jpg' },
-              { title: 'WOMEN', image: 'src/assets/women.jpg' },
-              { title: 'KID', image: 'src/assets/kid.jpg' }
+              { title: 'MAN', image: 'src/assets/baki-photo/men.jpg' },
+              { title: 'WOMEN', image: 'src/assets/baki-photo/women.jpg' },
+              { title: 'KID', image: 'src/assets/baki-photo/kid.jpg' }
             ].map((category) => (
               <div key={category.title} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-2xl h-130 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">

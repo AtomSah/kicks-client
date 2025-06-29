@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart, User } from 'lucide-react';
 import { useContext, useState, useRef, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { useCart } from '../context/CartContext'; // ✅ Import useCart
-import logo from '../assets/logo.png';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -30,7 +29,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src={logo} alt="Kicks Logo" className="h-10 w-10 object-contain" />
+            <img src="src/assets/baki-photo/logo.png" alt="Kicks Logo" className="h-10 w-10 object-contain" />
             <div className="text-2xl font-bold text-gray-900">Kicks</div>
           </div>
 
@@ -39,14 +38,13 @@ const Navbar = () => {
             <Link to="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
             <Link to="/shop" className="text-gray-700 hover:text-gray-900 font-medium">Shop</Link>
             <Link to="/AboutUs" className="text-gray-700 hover:text-gray-900 font-medium">About Us</Link>
-            <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">Contact</a>
+            <Link to="/contactUs"className="text-gray-700 hover:text-gray-900 font-medium">Contact</Link>
           </nav>
 
           {/* Right Side */}
           <div className="flex items-center space-x-6 relative">
             {user ? (
               <>
-                {/* ✅ Cart Button instead of Link */}
                 <Link to={"/cart"}>
                   <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-amber-600 cursor-pointer" />
                 </Link>

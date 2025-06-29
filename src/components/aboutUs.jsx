@@ -1,7 +1,6 @@
-import React from 'react';
 import { Heart, Award, Truck, Shield, Users, Star } from 'lucide-react';
-import Navbar from "../../components/navbar";
-import Footer from '../../components/footer';
+import Navbar from './navbar';
+import Footer from './footer';
 
 const AboutUs = () => {
   const values = [
@@ -43,7 +42,7 @@ const AboutUs = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/top-view-sneakers-compass-table.jpg')"
+            backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/baki-photo/top-view-sneakers-compass-table.jpg')"
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
