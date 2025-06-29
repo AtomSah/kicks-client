@@ -11,12 +11,12 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-  if (!user) {
-    toast.warning("Please login to add items to your cart.");
-    return;
-  }
-  addToCart(product); 
-};
+    if (!user) {
+      toast.warning("Please login to add items to your cart.");
+      return;
+    }
+    addToCart(product);
+  };
 
   return (
     <div
@@ -47,7 +47,7 @@ const ProductCard = ({ product }) => {
 
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="text-lg font-bold text-gray-900">₹{product.price}</span>
+            <span className="text-lg font-bold text-gray-900">Rs{product.price}</span>
             {product.originalPrice && (
               <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
             )}
@@ -59,7 +59,7 @@ const ProductCard = ({ product }) => {
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <button 
+            <button
               onClick={handleAddToCart}
               className="p-2 rounded-full bg-gray-200 text-gray-600 transition-colors hover:bg-gray-300"
             >

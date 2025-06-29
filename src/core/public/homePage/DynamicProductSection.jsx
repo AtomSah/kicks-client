@@ -50,7 +50,7 @@ const DynamicProductSection = () => {
                                 <p className="text-sm text-gray-500 mb-1">{product.brand}</p>
                                 <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">{product.name}</h3>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-lg font-bold text-gray-900">₹{product.price}</span>
+                                    <span className="text-lg font-bold text-gray-900">Rs{product.price}</span>
                                     <button className="p-2 rounded-full bg-gray-200 text-gray-600">
                                         <ShoppingCart className="w-5 h-5" />
                                     </button>

@@ -31,16 +31,16 @@ const Shop = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative h-64 md:h-80 overflow-hidden">
-        <div
+      <section className="relative h-96 overflow-hidden">
+        <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('src/assets/top-view-sneakers-compass-table.jpg')"
+            backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/top-view-sneakers-compass-table.jpg')"
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">Shop</h1>
+            <div className="text-center text-white max-w-4xl mx-auto px-4">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6">Shop</h1>
             </div>
           </div>
         </div>

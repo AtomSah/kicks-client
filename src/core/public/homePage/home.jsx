@@ -3,6 +3,7 @@ import { ShoppingCart, Heart, Star, ChevronLeft, ChevronRight } from 'lucide-rea
 import Navbar from '../../../components/navbar';
 import Footer from '../../../components/footer';
 import DynamicProductSection from './DynamicProductSection';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -96,9 +97,9 @@ const Home = () => {
                     <br />
                     With Us
                   </h1>
-                  <button className="bg-gray-800 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  <Link to="/Shop"><button className="bg-gray-800 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg">
                     BUY NOW
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
@@ -160,9 +161,9 @@ const Home = () => {
                 from the best collection.
               </p>
 
-              <button className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <Link to="/Shop"><button className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Explore More
-              </button>
+              </button></Link>
             </div>
 
             {/* Right Side - Image Carousel */}
