@@ -21,8 +21,6 @@ const Home = () => {
 
   const carouselImages = [
     'src/assets/carasol/carasol2.jpg',
-    // 'src/assets/carasol/carasol3.jpg', 
-    // 'src/assets/carasol/carasol4.jpg',
     'src/assets/carasol/carasol5.jpg',
     'src/assets/carasol/carasol6.jpg',
     'src/assets/carasol/carasol9.jpg',

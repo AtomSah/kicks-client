@@ -153,9 +153,9 @@ const AboutUs = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: "Atom Sah", role: "Founder & CEO", image: "src/assets/atom.jpg" },
-              { name: "Nirajan Mahato", role: "Head of Design", image: "src/assets/nirajan.jpg" },
-              { name: "Manisha Saha", role: "Customer Experience", image: "src/assets/manisha.png" }
+              { name: "Atom Sah", role: "Founder & CEO", image: "src/assets/baki-photo/atom.jpg" },
+              { name: "Nirajan Mahato", role: "Head of Design", image: "src/assets/baki-photo/nirajan.jpg" },
+              { name: "Manisha Saha", role: "Customer Experience", image: "src/assets/baki-photo/manisha.png" }
             ].map((member, index) => (
               <div key={index} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="aspect-square bg-gradient-to-br from-orange-100 to-orange-200">
