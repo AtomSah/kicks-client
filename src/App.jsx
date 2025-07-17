@@ -18,8 +18,8 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/Shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/contactUs" element={<contactUs />} />
         <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/contactPage" element={<contactPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/CheckoutPage" element={<CheckoutPage />} />
 
