@@ -38,7 +38,7 @@ const Navbar = () => {
             <Link to="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
             <Link to="/shop" className="text-gray-700 hover:text-gray-900 font-medium">Shop</Link>
             <Link to="/AboutUs" className="text-gray-700 hover:text-gray-900 font-medium">About Us</Link>
-            <Link to="/contactUs"className="text-gray-700 hover:text-gray-900 font-medium">Contact</Link>
+            <Link to="/contact"className="text-gray-700 hover:text-gray-900 font-medium">Contact</Link>
           </nav>
 
           {/* Right Side */}

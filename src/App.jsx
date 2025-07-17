@@ -8,6 +8,8 @@ import CartDrawer from './components/CartDrawer';
 import CartPage from './core/public/cart/cartPage';
 import AboutUs from './components/aboutUs';
 import CheckoutPage from './core/public/checkout/Checkout';
+import Kxa from './core/public/kxa';
+
 
 function App() {
   return (
@@ -18,10 +20,10 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/Shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/contactUs" element={<contactUs />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/CheckoutPage" element={<CheckoutPage />} />
+        <Route path="/check" element={<Kxa />} />
 
       </Routes>
 
