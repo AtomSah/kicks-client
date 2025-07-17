@@ -8,6 +8,8 @@ import CartDrawer from './components/CartDrawer';
 import CartPage from './core/public/cart/cartPage';
 import AboutUs from './components/aboutUs';
 import CheckoutPage from './core/public/checkout/Checkout';
+import Kxa from './core/public/contactpage';
+import Contactpage from './core/public/contactpage';
 
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/CheckoutPage" element={<CheckoutPage />} />
-        <Route path="/check" element={<contactUs />} />
+        <Route path="/contact" element={<Contactpage />} />
 
       </Routes>
 
