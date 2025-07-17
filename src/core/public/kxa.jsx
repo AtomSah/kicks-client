@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Kxa = () => {
+const contactUs = () => {
   return (
     <div>Kxa</div>
   )
 }
 
-export default Kxa
+export default contactUs
