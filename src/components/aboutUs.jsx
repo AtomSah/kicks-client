@@ -5,22 +5,22 @@ import Footer from './footer';
 const AboutUs = () => {
   const values = [
     {
-      icon: <Heart className="h-8 w-8 text-orange-500" />,
+      icon: <Heart className="h-8 w-8 text-red-600" />,
       title: "Passion for Footwear",
       description: "We're passionate about bringing you the finest collection of shoes that combine style, comfort, and quality."
     },
     {
-      icon: <Award className="h-8 w-8 text-orange-500" />,
+      icon: <Award className="h-8 w-8 text-red-600" />,
       title: "Premium Quality",
       description: "Every pair of shoes in our collection is carefully selected for superior craftsmanship and durability."
     },
     {
-      icon: <Users className="h-8 w-8 text-orange-500" />,
+      icon: <Users className="h-8 w-8 text-red-600" />,
       title: "Customer First",
       description: "Your satisfaction is our priority. We're committed to providing exceptional service and support."
     },
     {
-      icon: <Truck className="h-8 w-8 text-orange-500" />,
+      icon: <Truck className="h-8 w-8 text-red-600" />,
       title: "Fast Delivery",
       description: "Quick and reliable shipping to get your favorite shoes to your doorstep as soon as possible."
     }
@@ -71,7 +71,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
-                <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+                <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium mb-4">
                   <Star className="w-4 h-4 mr-2" />
                   Our Journey
                 </div>
