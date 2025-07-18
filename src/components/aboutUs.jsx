@@ -56,8 +56,6 @@ const AboutUs = () => {
             Where passion meets perfection in every step          
             </p>
         </div>
-
-
       </section>
 
       {/* Story Section */}
