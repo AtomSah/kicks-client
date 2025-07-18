@@ -53,8 +53,8 @@ const AboutUs = () => {
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-orange-100 font-light">
-            Where passion meets perfection in every step          
-            </p>
+            Where passion meets perfection in every step
+          </p>
         </div>
       </section>
 
