@@ -74,7 +74,7 @@ const AboutUs = () => {
                   Our Journey
                 </div>
                 <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                  Our <span className="text-orange-500">Story</span>
+                  Our <span className="text-orange-400">Story</span>
                 </h2>
               </div>
 
@@ -145,7 +145,7 @@ const AboutUs = () => {
               Our Values
             </div>
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              What We <span className="text-orange-500">Stand For</span>
+              What We <span className="text-orange-400">Stand For</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Our values drive everything we do, from selecting the perfect shoes to delivering exceptional customer experiences.
@@ -187,7 +187,7 @@ const AboutUs = () => {
               Our Achievements
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Our <span className="text-orange-500">Impact</span>
+              Our <span className="text-orange-400">Impact</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">Numbers that tell our story</p>
           </div>
@@ -221,7 +221,7 @@ const AboutUs = () => {
             Our Mission
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-12">
-            Our <span className="text-orange-500">Mission</span>
+            Our <span className="text-orange-400">Mission</span>
           </h2>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-orange-600/10 rounded-3xl transform rotate-1"></div>
@@ -249,7 +249,7 @@ const AboutUs = () => {
               Our Team
             </div>
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Meet Our <span className="text-orange-500">Team</span>
+              Meet Our <span className="text-orange-400">Team</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">The passionate people behind KICKS</p>
           </div>

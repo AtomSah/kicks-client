@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar'
 import { Clock, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 
 const Contactpage = () => {
-   const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
@@ -25,10 +25,10 @@ const Contactpage = () => {
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50">
-      <Navbar/ >
+      <Navbar />
       {/* Hero Section */}
       <section className="relative h-100 flex items-center justify-center overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-700"
           style={{
             backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.5), rgba(249,115,22,0.3)), url('src/assets/baki-photo/top-view-sneakers-compass-table.jpg')"
@@ -47,11 +47,11 @@ const Contactpage = () => {
         </div>
       </section>
 
-            {/* Contact Content */}
+      {/* Contact Content */}
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
@@ -90,7 +90,7 @@ const Contactpage = () => {
                 <MessageCircle className="w-8 h-8 text-orange-500 mr-3" />
                 <h3 className="text-2xl font-bold text-gray-900">Send us a message</h3>
               </div>
-              
+
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -118,7 +118,7 @@ const Contactpage = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                   <input
@@ -131,7 +131,7 @@ const Contactpage = () => {
                     placeholder="What's this about?"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                   <textarea
@@ -144,7 +144,7 @@ const Contactpage = () => {
                     placeholder="Tell us how we can help you..."
                   />
                 </div>
-                
+
                 <button
                   onClick={handleSubmit}
                   className="w-full bg-gradient-to-r from-orange-00 to-orange-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2"
