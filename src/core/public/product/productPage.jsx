@@ -74,10 +74,10 @@ const applyFilters = async () => {
 
       {/* Hero */}
       <section className="relative h-96 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-700"
           style={{
-            backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('src/assets/baki-photo/top-view-sneakers-compass-table.jpg')"
+            backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.5), rgba(249,115,22,0.3)), url('src/assets/baki-photo/top-view-sneakers-compass-table.jpg')"
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">

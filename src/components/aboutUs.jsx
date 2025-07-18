@@ -36,41 +36,28 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div 
+      <section className="relative h-100 flex items-center justify-center overflow-hidden">
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-700"
           style={{
             backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.5), rgba(249,115,22,0.3)), url('src/assets/baki-photo/top-view-sneakers-compass-table.jpg')"
           }}
         >
         </div>
-        
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-4">
-          <div className="animate-fade-in-up">
-            <h1 className="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent drop-shadow-2xl">
-              About KICKS
-            </h1>
-            <div className="w-32 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full mb-8"></div>
-            <p className="text-xl md:text-2xl text-orange-100 font-light max-w-3xl mx-auto leading-relaxed">
-              Where passion meets perfection in every step
+
+        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">
+            About KICKS
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-orange-100 font-light">
+            Where passion meets perfection in every step          
             </p>
-          </div>
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
+
+
       </section>
 
       {/* Story Section */}
@@ -79,7 +66,7 @@ const AboutUs = () => {
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-orange-100/50 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-orange-50/70 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -92,52 +79,52 @@ const AboutUs = () => {
                   Our <span className="text-orange-500">Story</span>
                 </h2>
               </div>
-              
+
               <div className="space-y-6">
                 <div className="group">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-2 h-2 bg-orange-500 rounded-full mt-3 group-hover:scale-150 transition-transform"></div>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      Founded in 2020, KICKS began as a dream to revolutionize the way people experience footwear. 
+                      Founded in 2020, KICKS began as a dream to revolutionize the way people experience footwear.
                       We believe that the right pair of shoes can transform not just your outfit, but your entire day.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="group">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-2 h-2 bg-orange-500 rounded-full mt-3 group-hover:scale-150 transition-transform"></div>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      What started as a small collection of carefully curated shoes has grown into a comprehensive 
-                      destination for footwear enthusiasts worldwide. We partner with renowned brands and emerging 
+                      What started as a small collection of carefully curated shoes has grown into a comprehensive
+                      destination for footwear enthusiasts worldwide. We partner with renowned brands and emerging
                       designers to bring you the perfect blend of style, comfort, and innovation.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="group">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-2 h-2 bg-orange-500 rounded-full mt-3 group-hover:scale-150 transition-transform"></div>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      Today, KICKS serves thousands of customers globally, each step of the way guided by our 
+                      Today, KICKS serves thousands of customers globally, each step of the way guided by our
                       commitment to quality, authenticity, and exceptional customer service.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-3xl transform rotate-6 group-hover:rotate-3 transition-transform duration-500"></div>
               <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-orange-100 to-orange-200 transform group-hover:scale-105 transition-transform duration-500">
-                <img 
+                <img
                   src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                   alt="Shoe collection"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 to-transparent"></div>
               </div>
-              
+
               {/* Floating elements */}
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-orange-500 rounded-full opacity-20 animate-pulse"></div>
               <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-orange-400 rounded-full opacity-15 animate-pulse delay-1000"></div>
@@ -152,7 +139,7 @@ const AboutUs = () => {
           <div className="absolute top-1/4 left-0 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-orange-100/40 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-6">
@@ -166,7 +153,7 @@ const AboutUs = () => {
               Our values drive everything we do, from selecting the perfect shoes to delivering exceptional customer experiences.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div key={index} className="group relative">
@@ -194,7 +181,7 @@ const AboutUs = () => {
           <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <div className="inline-flex items-center px-4 py-2 bg-orange-500/20 text-orange-300 rounded-full text-sm font-medium mb-6">
@@ -206,7 +193,7 @@ const AboutUs = () => {
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">Numbers that tell our story</p>
           </div>
-          
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="group text-center">
@@ -229,7 +216,7 @@ const AboutUs = () => {
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-8">
             <Shield className="w-4 h-4 mr-2" />
@@ -242,7 +229,7 @@ const AboutUs = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-orange-600/10 rounded-3xl transform rotate-1"></div>
             <blockquote className="relative bg-white/80 backdrop-blur-sm p-12 rounded-3xl border border-orange-100 shadow-xl">
               <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed font-light italic">
-                "To provide every customer with premium footwear that enhances their lifestyle, 
+                "To provide every customer with premium footwear that enhances their lifestyle,
                 backed by unmatched quality and service that exceeds expectations."
               </p>
             </blockquote>
@@ -256,7 +243,7 @@ const AboutUs = () => {
           <div className="absolute top-0 left-1/4 w-80 h-80 bg-orange-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-6">
@@ -268,7 +255,7 @@ const AboutUs = () => {
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">The passionate people behind KICKS</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { name: "Atom Sah", role: "Founder & CEO", image: "src/assets/baki-photo/atom.jpg" },
@@ -278,8 +265,8 @@ const AboutUs = () => {
               <div key={index} className="group">
                 <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105">
                   <div className="relative aspect-square bg-gradient-to-br from-orange-100 to-orange-200 overflow-hidden">
-                    <img 
-                      src={member.image} 
+                    <img
+                      src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -298,7 +285,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };
