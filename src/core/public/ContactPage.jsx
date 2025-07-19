@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
+import Footer from '../../components/footer';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -167,7 +168,7 @@ const ContactPage = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-3xl transform rotate-3 group-hover:rotate-1 transition-transform duration-500"></div>
               <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-orange-100 to-orange-200 transform group-hover:scale-105 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  src="https://softwarica.edu.np/file-manager/photos/1/coventry.jpg"
                   alt="Store location"
                   className="w-full h-full object-cover"
                 />
@@ -207,6 +208,7 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };
