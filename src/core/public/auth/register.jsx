@@ -96,7 +96,7 @@ function Register() {
       <div className="w-2/5 bg-gradient-to-br from-orange-200 to-orange-300 relative">
         <div className="absolute inset-0 flex items-center justify-center">
           <img
-            src="src/assets/loginp.png"
+            src="src/assets/baki-photo/loginp.png"
             alt="shoe"
             className="max-w-full max-h-full object-contain p-4"
           />

@@ -128,8 +128,8 @@ const Login = () => {
                        bottom-4 right-4 sm:bottom-8 sm:right-8 md:bottom-12 md:right-12 lg:bottom-auto lg:right-44 lg:top-1/2 lg:-translate-y-1/2
                        bg-gray-300 rounded-lg shadow-lg pointer-events-auto">
           <img
-            src="src/assets/loginp.png"
-            alt="shoe"
+            src="src/assets/baki-photo/loginp.png"
+            // alt="shoe"
             className="max-w-full max-h-full object-contain p-2 sm:p-4"
           />
         </div>

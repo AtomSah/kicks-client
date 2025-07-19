@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShoppingCart, User } from 'lucide-react';
+import { ShoppingCart, User, ChevronDown } from 'lucide-react';
 import { useContext, useState, useRef, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
@@ -8,7 +8,7 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
-  const { toggleCart } = useCart(); // ✅ Destructure toggleCart
+  const { toggleCart } = useCart();
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
@@ -22,6 +22,12 @@ const Navbar = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Function to get user initials
+  const getUserInitials = (name) => {
+    if (!name) return 'U';
+    return name.split(' ').map(word => word[0]).join('').toUpperCase().slice(0, 2);
+  };
 
   return (
     <header className="bg-white shadow-sm relative">
@@ -38,7 +44,7 @@ const Navbar = () => {
             <Link to="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
             <Link to="/shop" className="text-gray-700 hover:text-gray-900 font-medium">Shop</Link>
             <Link to="/AboutUs" className="text-gray-700 hover:text-gray-900 font-medium">About Us</Link>
-            <Link to="/contact"className="text-gray-700 hover:text-gray-900 font-medium">Contact</Link>
+            <Link to="/contact" className="text-gray-700 hover:text-gray-900 font-medium">Contact</Link>
           </nav>
 
           {/* Right Side */}
@@ -51,24 +57,58 @@ const Navbar = () => {
 
                 {/* Profile Dropdown */}
                 <div className="relative" ref={dropdownRef}>
-                  <button onClick={toggleDropdown}>
-                    <User className="w-6 h-6 text-gray-700 hover:text-amber-600 cursor-pointer" />
+                  <button 
+                    onClick={toggleDropdown}
+                    className="flex items-center space-x-2 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-full transition-colors duration-200"
+                  >
+                    {/* Profile Avatar */}
+                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                      {getUserInitials(user.username)}
+                    </div>
+                    
+                    {/* Username and Arrow */}
+                    <div className="flex items-center space-x-1">
+                      <span className="text-gray-700 font-medium text-sm hidden sm:block">
+                        {user.username}
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`} />
+                    </div>
                   </button>
 
                   {showDropdown && (
-                    <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-200 shadow-lg rounded-lg z-50 p-4">
-                      <p className="text-sm text-gray-600 mb-1">
-                        <span className="font-semibold text-gray-800">Username:</span> {user.username}
-                      </p>
-                      <p className="text-sm text-gray-600 mb-3">
-                        <span className="font-semibold text-gray-800">Email:</span> {user.email}
-                      </p>
-                      <button
-                        onClick={logout}
-                        className="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition"
-                      >
-                        Logout
-                      </button>
+                    <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-xl rounded-xl z-50 overflow-hidden">
+                      {/* Profile Header */}
+                      <div className="px-4 py-4 bg-gray-50 border-b border-gray-200">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                            {getUserInitials(user.username)}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-gray-900 truncate">
+                              {user.username}
+                            </p>
+                            <p className="text-xs text-gray-500 truncate">
+                              {user.email}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Logout Button */}
+                      <div className="p-2">
+                        <button
+                          onClick={() => {
+                            logout();
+                            setShowDropdown(false);
+                          }}
+                          className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 rounded-lg transition-colors duration-200 flex items-center space-x-2"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                          </svg>
+                          <span>Sign Out</span>
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
